@@ -1,4 +1,49 @@
 一、下载远程仓库
-
 git clone https://github.com/zhangbin091/java-.git
 会将整个远程仓库下载下来，(仓库名作为一个目录)
+
+二、 提交更新内容
+ git add git相关知识.txt
+ //添加要修改的文档，将修改的文档提交到status中
+
+git status
+//查看修改状态，此时的更新文档为红色
+
+git commit -m 'git命令'
+//提交暂存区的指定文件到仓库区,此时通过git status命令查看状态时，文档为绿色
+
+git push origin master
+//git push <remote> <branch> origin代表关联的git仓库
+
+git pull
+//从远程仓库下拉最新代码
+
+三、分支管理
+ git branch -a
+ //查看所有分支
+
+//分支关联
+
+//添加远程仓库,git remote add <shortname> <url> 添加一个新的远程 Git 仓库，同时指定一个方便使用的简写
+git remote add java-2 https://github.com/zhangbin091/java-2.git
+
+git remote -v
+//显示关联的远程仓库
+
+git fetch java-2
+//从远程仓库中抓取与拉取, git fetch <remote>,如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。
+
+ git remote show java-2
+ //查看某个远程仓库.git remote show <remote>
+
+git remote rename java-2 java-two
+//修改一个远程仓库的简写名
+
+git remote remove java-two
+//移除一个远程仓库
+
+//远程仓库的重命名与移除
+
+
+git 命令文档
+https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6
