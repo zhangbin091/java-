@@ -1,0 +1,4 @@
+一、下载远程仓库
+
+git clone https://github.com/zhangbin091/java-.git
+会将整个远程仓库下载下来，(仓库名作为一个目录)
