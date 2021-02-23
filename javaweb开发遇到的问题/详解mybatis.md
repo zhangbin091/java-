@@ -151,7 +151,7 @@ public interface BookDao {
     </mappers>
 ```
 
-有多少mapper.xml文件就引入多少，不然mybatis为报错，
+有多少mapper.xml文件就引入多少，不然当调用对应Dao接口方法的时候mybatis为报错，
 
 ```
 org.apache.ibatis.binding.BindingException: Type interface com.riant.dao.BookDao is not known to the MapperRegistry.
