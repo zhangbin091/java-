@@ -1,0 +1,32 @@
+一、什么是序列化、反序列化
+序列化：将对象写入到IO流中
+反序列化：从IO流中恢复对象
+
+
+二、为什么要序列化
+序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。
+序列化机制使得对象可以脱离程序的运行而独立存在。
+
+如果需要将某个对象保存到磁盘上或者通过网络传输
+
+三、实现序列化的方式
+1、实现Serializable接口
+Serializable是一个空接口，仅用于标识可序列化的语义
+
+
+
+枚举类默认继承类java.lang.Enum，而该类实现了Serializable接口，所以枚举类型对象都是默认可以被序列化的。
+
+
+transient关键字
+当某个字段被声明为transient后，默认序列化机制就会忽略该字段。
+在Java web中，GenericServlet 就有一个字段，ServletConfig就被声明为transient，表明该字段无需序列化
+
+serialVersionUID
+虚拟机是否允许反序列化，不仅取决于类路径和功能代码是否一致，一个非常重要的一点是两个类的序列化 ID 是否一致，
+这个所谓的序列化ID，就是我们在代码中定义的serialVersionUID。
+
+这是因为，在进行反序列化时，JVM会把传来的字节流中的serialVersionUID与本地相应实体类的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常，即是InvalidCastException。
+
+
+当没有serialVersionUID值时，系统自己添加了一个serialVersionUID。
