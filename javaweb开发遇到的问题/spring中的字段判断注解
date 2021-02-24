@@ -1,0 +1,39 @@
+Java中数据校验
+为了满足程序的数据校验功能（非空、长度、格式等等），确保输入进来的数据从语义上来讲是正确的。将验证逻辑与相应的域模型进行绑定。
+1、依赖信息
+        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.3.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+2、
+
+
+@Size()
+
+@Notnull
+
+
+@Pattern()
+
+
+@NotEmpty
+
+
+
+
+3、自定义校验规则
+
+
