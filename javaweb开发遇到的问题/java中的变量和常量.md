@@ -150,7 +150,29 @@ class A{
 }
 ```
 
+### 四、jvm字符串常量内存分布分析
 
+```
+public class TestString {
+    public static void main(String[] args) {
+        String s1 = "china";
+        String s2 = "china";
+        String s3 = "china";
+        String ss1 = new String("china");
+        String ss2 = new String("china");
+        String ss3 = new String("china");
+        System.out.println(s1==s2);//true
+        System.out.println(s1==s3);//true
+        System.out.println(ss1==s2);//false
+        System.out.println(ss1==s3);//false
+    }
+}
+```
 
+![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvOTA4NTE0LzIwMTYwNy85MDg1MTQtMjAxNjA3MjAxMDEwMjQ4NDEtMjM4MjY5OTc3LmpwZw?x-oss-process=image/format,png)
 
+对于字符串，其对象的引用都是存储在栈中的，如果是编译期已经创建好(直接用双引号定义的)的就存储在常量池中，如果是运行期（new出来的）才能确定的就存储在堆中。对于equals相等的字符串，在常量池中永远只有一份，在堆中有多份。
 
+　这里解释一下黄色这3个箭头，对于通过new产生一个字符串（假设为“china”）时，会先去常量池中查找是否已经有了“china”对象，如果没有则在常量池中创建一个此字符串对象，然后堆中再创建一个常量池中此”china”对象的拷贝对象。
+
+存在于.class文件中的常量池，在运行期被JVM装载，并且可以扩充。String的 intern()方法就是扩充常量池的 一个方法；当一个String实例str调用intern()方法时，Java 查找常量池中是否有相同Unicode的字符串常量，如果有，则返回其的引用，如果没有，则在常量池中增加一个Unicode等于str的字符串并返回它的引用
